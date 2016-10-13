@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="EN" target-language="en" datatype="plaintext" original="messages" date="2011-10-24T13:01:55+02:00" product-name="t3ws">
+		<header />
+		<body>
+            <trans-unit id="youAreHere" approved="yes">
+				<source>You are here</source>
+			</trans-unit>
+            <trans-unit id="teaser.wizard.title" approved="yes">
+                <source>Teaser</source>
+            </trans-unit>
+            <trans-unit id="teaser.wizard.description" approved="yes">
+                <source>Teaser mit Bild und Text</source>
+            </trans-unit>
+		</body>
+	</file>
+</xliff>

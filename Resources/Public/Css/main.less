@@ -1,0 +1,459 @@
+@import 'vars';
+/* ==========================================================================
+   typo overrides
+   ========================================================================== */
+html, body {
+	height : 100%;
+}
+body {
+	font-family : @fontDroidSans;
+	#content .bodytext, #content p {
+		color          : @colorText;
+		font-family    : @fontDroidSans;
+		font-size      : 12px;
+		font-weight    : 400;
+		letter-spacing : 1px;
+		line-height    : 24px;
+	}
+}
+h1 {
+	line-height : 60px;
+	font-size   : 30px;
+	font-family : @fontDroidSans;
+	font-weight : 300;
+	color       : @colorHeadline;
+	margin      : 0 0 35px 0;
+	padding     : 0;
+}
+h1 a {
+	line-height : 60px;
+	font-size   : 30px;
+	font-family : @fontDroidSans;
+	font-weight : 300;
+	padding     : 0px;
+}
+h1 a:hover {
+	text-decoration : none;
+	color           : @colorHeadline;
+}
+h2 {
+	font-size   : 20px;
+	font-family : @fontDroidSans;
+	font-weight : 300;
+}
+h3 {
+	font-size   : 20px;
+	font-family : @fontDroidSans;
+	font-weight : 300;
+}
+h4, h5, h6 {
+	font-size   : 20px;
+	font-family : @fontDroidSans;
+	font-weight : 300;
+}
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+body, html {
+	position : relative;
+	height   : 100%;
+}
+#header {
+	width              : 100%;
+	height             : @headerHeight;
+	-webkit-box-shadow : 0 10px 5px 0 rgba(0, 0, 0, 0.2);
+	box-shadow         : 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+	position           : fixed;
+	top                : 0;
+	left               : 0;
+	z-index            : 11;
+	background         : @white;
+	.logo {
+		padding-top : 25px;
+		img {
+			height : 60px;
+		}
+	}
+	.menu {
+
+	}
+	&.scroll {
+		height : @headerHeightScroll;
+		.logo {
+			padding : 7px 0 0 0;
+			a img {
+				height : 35px !important;
+				width  : auto;
+			}
+		}
+		.menu {
+			nav.top {
+				li a.fst {
+					height  : @headerHeightScroll;
+					padding : 17px 0 0 40px;
+				}
+				.dropdown-menu {
+					top : @headerHeightScroll;
+				}
+			}
+		}
+	}
+}
+#header-image {
+	margin-top : 100px;
+	height     : 430px;
+	width      : 100%;
+	overflow   : hidden;
+}
+#content {
+	background-color : @lightBlue;
+	min-height       : 300px;
+	padding-top      : 25px;
+	padding-bottom   : @footerHeight;
+
+	.teaser {
+		position : relative;
+		.inner {
+			border     : 1px solid @orange;
+			position   : relative;
+			h1, h2, h3, h4, h5, h6 {
+				display          : block;
+				height           : auto;
+				line-height      : 110%;
+				width            : 100%;
+				position         : absolute;
+				top              : -20px;
+				left             : 0;
+				text-transform   : uppercase;
+				color            : @white;
+				font-family      : @fontDroidSans;
+				font-size        : 14px;
+				font-weight      : 300;
+				letter-spacing   : 1px;
+				background-color : rgba(252, 107, 2, 0.7);
+				padding: 20px;
+
+				a {
+					text-decoration : none;
+					text-transform  : uppercase;
+					color           : @white;
+					font-family     : @fontDroidSans;
+					font-size       : 16px;
+					font-weight     : 300;
+					letter-spacing  : 1px;
+				}
+			}
+			.teaser-text {
+				padding         : 60px 20px 20px 20px;
+				color           : @colorText;
+				font-family     : @fontDroidSans;
+				font-size       : 10px;
+				font-weight     : 400;
+				letter-spacing  : 1px;
+				line-height     : 24px;
+				text-decoration : none !important;
+				border          : 0 !important;
+			}
+
+		}
+	}
+}
+#footer {
+	height :200px;
+	background : @colorHeadline;
+	width      : 100%;
+	border-top : 1px solid @blue;
+	.copyright {
+		text-align:  center !important;
+		font-size: 10px ;
+		padding: 20px;
+	}
+
+
+}
+/* ==========================================================================
+   navigation
+   ========================================================================== */
+nav.top {
+	border     : 0;
+	background : none;
+	box-shadow : none;
+	margin     : 0;
+	padding    : 0;
+	border     : 0;
+	position   : relative;
+	.navbar-nav {
+		padding    : 0;
+		margin     : 0 auto;
+		display    : inline-block;
+		float      : right;
+		width      : 100%;
+		text-align : right;
+		& > li {
+			border     : 0;
+			margin     : 0;
+			padding    : 0;
+			float      : none;
+			display    : inline-block;
+			height     : auto;
+			background : none;
+		}
+		& > li .caret {
+			display : none;
+		}
+		& > li:hover {
+			border     : 0;
+			background : none;
+		}
+		& > li a.fst {
+			font-family     : @fontDroidSans;
+			color           : @colorMavi;
+			box-shadow      : none;
+			font-size       : 16px;
+			font-weight     : 400;
+			letter-spacing  : 2px;
+			white-space     : nowrap;
+			display         : block;
+			text-shadow     : none;
+			background      : none;
+			text-decoration : none;
+			display         : block;
+			height          : @headerHeight;
+			padding         : 40px 0 0 40px;
+			text-align: left;
+			margin          : 0;
+		}
+		& > li:first-child a.fst {
+			padding-left : 0;
+		}
+
+		& > li.active {
+			color      : @black;
+			background : none;
+		}
+		& > li a.fst:hover,
+		.navbar-nav > li.active a.fst {
+			color      : @black;
+			background : none;
+		}
+		/* enable hover */
+		li.dropdown:hover > ul.dropdown-menu {
+			display : block !important;
+		}
+	}
+
+}
+nav.footer {
+	margin  : 0;
+	padding : 0;
+	float   : right;
+	ul {
+		list-style : none;
+		margin     : 0;
+		padding    : 0 20px 0 20px;
+		background : @roseWhite;
+		float      : right;
+		text-align : right;
+		li {
+			float   : left;
+			margin  : 0;
+			padding : 0;
+		}
+		li a {
+			display             : block;
+			color               : @blue;
+			text-decoration     : none;
+			font-family         : @fontDroidSans;
+			font-size           : 12px;
+			font-weight         : 400;
+			letter-spacing      : 2px;
+			height              : @footerHeight;
+			text-align          : center;
+			padding             : 8px 10px 10px 10px;
+			margin              : 0;
+			background-image    : url(../Img/nav-footer_sep.png);
+			background-position : right 0px top 11px;
+			background-repeat   : no-repeat;
+		}
+		li:last-child a {
+			background-image : none;
+		}
+	}
+
+}
+/* ==========================================================================
+    Responsive Helper
+   ========================================================================== */
+@media (min-width : 960px) {
+
+	.navbar-toggle,
+	.btn-top,
+	a.nav-open {
+		display : none !important;
+	}
+	a.mobile {
+		text-decoration : none;
+		pointer-events  : none;
+		cursor          : default;
+		position        : relative;
+	}
+}
+@media (min-width : 769px) and (max-width : 959px) {
+
+	.btn-top,
+	.navbar-toggle,
+	a.nav-open {
+		display : none !important;
+	}
+	a.mobile {
+		text-decoration : none;
+		pointer-events  : none;
+		cursor          : default;
+		position        : relative;
+	}
+	/* navigation */
+	nav.top {
+		/* scaling: */
+		ul li a {
+			-webkit-transition : -webkit-transform 0.5s ease;
+			-moz-transition    : -moz-transform 0.5s ease;
+			transition         : transform 0.5s ease;
+		}
+		ul li a:hover {
+			-webkit-transform : scale(1.25);
+			-moz-transform    : scale(1.25);
+			-o-transform      : scale(1.25);
+			transform         : scale(1.25);
+		}
+	}
+
+}
+@media (min-width : 1px) and (max-width : 767px) {
+
+	#header {
+
+	}
+	#content .row.top {
+		margin     : 0px;
+		margin-top : 30px;
+		width      : 100%;
+		border     : 0;
+		padding    : 10px;
+		.portrait {
+			display : none;
+		}
+		.content.top p.bodytext {
+			padding-right : 30px;
+		}
+		.content.top h1 {
+			padding-bottom : 30px;
+			margin-bottom  : 20px;
+			font-size      : 30px;
+		}
+	}
+	#content {
+
+	}
+	a.mobile {
+		text-decoration : underline;
+	}
+	/* navigation */
+	.navbar-toggle {
+		display    : block;
+		position   : absolute;
+		z-index    : 99999;
+		top        : 5px;
+		right      : 8px;
+		color      : #fff;
+		border     : 0;
+		background : none;
+		font-size  : 25px;
+		padding    : 0px;
+		.icon-bar {
+			display    : block;
+			width      : 22px;
+			height     : 3px;
+			background : @black;
+		}
+		#icon-remove.glyphicon {
+			position    : absolute;
+			z-index     : 2;
+			top         : 4px;
+			right       : 10px;
+			width       : 22px;
+			height      : 22px;
+			color       : @black;
+			display     : none;
+			font-family : @fontDroidSans;
+			padding     : 7px;
+		}
+	}
+	nav.top.navbar-default {
+		display            : none;
+		position           : absolute;
+		overflow           : hidden;
+		z-index            : 9999;
+		left               : 0;
+		top                : 60px !important;
+		border             : 0;
+		width              : 100%;
+		-webkit-box-shadow : 1px 4px 5px 0 rgba(0, 0, 0, 0.5);
+		box-shadow         : 1px 4px 5px 0 rgba(0, 0, 0, 0.5);
+		height             : auto;
+		background-color   : rgba(255, 255, 255, 0.95);
+		ul {
+			clear           : both;
+			list-style-type : none;
+			margin          : 0;
+			padding         : 0;
+			position        : relative;
+			display         : block;
+			float           : none;
+			width           : 100%;
+		}
+		.navbar-nav > li {
+			display : block;
+			width   : 100%;
+			border  : 0;
+			margin  : 0;
+			padding : 0;
+		}
+		ul.lvl-1 > li a.fst {
+			display         : block;
+			text-decoration : none;
+			color           : @black;
+			border-top      : 0;
+			border-bottom   : 1px solid @colorHeadline;
+			margin          : 0;
+			padding         : 20px 20px 20px 20px;
+			width           : 100%;
+		}
+		ul.lvl-1 > li > a:hover,
+		ul.lvl-1 > li.active a {
+			color            : @black !important;
+			border-top       : 0 !important;
+			border-bottom    : 1px solid @colorHeadline !important;
+			background-color : @lightGray !important;
+		}
+	}
+	/* footer */
+	#footer {
+		.btn-top {
+			clear         : both;
+			display       : block;
+			margin-bottom : 50px;
+			span {
+				display    : block;
+				border     : 0;
+				height     : 60px;
+				width      : 60px;
+				font-size  : 60px;
+				text-align : center;
+				color      : @orange;
+				cursor     : pointer;
+				margin     : 80px auto 0 auto;
+			}
+		}
+	}
+
+}

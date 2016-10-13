@@ -1,0 +1,276 @@
+#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:t3ws/Configuration/TypoScript/ContentObjects/Config.ts">
+#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:t3ws/Configuration/TypoScript/ContentObjects/Page.ts">
+#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:t3ws/Configuration/TypoScript/ContentObjects/Libs.ts">
+#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:t3ws/Configuration/TypoScript/ContentObjects/Extension.ts">
+
+##########################################################################################
+# Konfiguration:
+##########################################################################################
+config {
+    doctype = html5
+    admPanel = 0
+    debug = 0
+    baseUrl = http://t3ws.dev:8888
+
+    // URL Settings
+    tx_realurl_enable = 0
+
+    // language
+    language = de
+    locale_all = de_DE
+    htmlTag_langKey = de-DE
+    sys_language_uid = 0
+    sys_language_overlay = hideNonTranslated
+    sys_language_mode = strict
+    linkVars = L
+
+    # absRefPrefix = /
+    prefixLocalAnchors    = all
+
+    index_enable = 0
+    no_cache = 1
+
+    // Protect mail addresses from spamming
+    spamProtectEmailAddresses = -3
+    spamProtectEmailAddresses_atSubst = @
+
+    # STANDARD SEITENTITEL ABSCHALTEN
+    noPageTitle = 1
+
+    #concatenateCss = 1
+    #compressCss = 1
+    #concatenateJs = 1
+    #compressJs = 1
+
+}
+##########################################################################################
+# PAGE Objekt:
+##########################################################################################
+page = PAGE
+page {
+    shortcutIcon = fileadmin/template/img/favicon.ico
+    meta {
+        keywords.field = keywords
+        description.field = description
+        robots = index, follow
+        viewport = width=device-width, initial-scale=1
+    }
+    10 = FLUIDTEMPLATE
+    10 {
+        layoutRootPath = {$filepaths.layouts}
+        partialRootPath = {$filepaths.partials}
+        file.stdWrap.cObject = CASE
+        file.stdWrap.cObject {
+            key.data = levelfield:-1, backend_layout_next_level, slide
+            key.override.field = backend_layout
+            default = TEXT
+            default.value = {$filepaths.templates}Standard.html
+        }
+    }
+    headerData {
+        20 = TEXT
+        20.field = title
+        20.wrap = <title>Webstammtisch&nbsp;&#124;&nbsp;| </title>
+        30 = TEXT
+        30.value = <link href="https://fonts.googleapis.com/css?family=Droid+Sans|Open+Sans" rel="stylesheet">
+    }
+
+    includeCSS {
+        file20 = {$filepaths.css}bootstrap.min.css
+        file20.media = all
+        file30 = {$filepaths.css}main.css
+        file30.media = all
+    }
+    includeJS {
+        file10 = {$filepaths.js}Libs/jquery-1.11.3.min.js
+    }
+
+    includeJSFooter {
+        file10 = {$filepaths.js}Libs/bootstrap.min.js
+        file30 = {$filepaths.js}script.js
+    }
+}
+
+
+
+##########################################################################################
+# tt_content:
+##########################################################################################
+tt_content.image.20.1.params = class="img-responsive"
+
+
+#tt_content {
+#    t3ws_teaser < lib.fluidContent
+#    t3ws_teaser {
+#        templateName = Teaser.html
+#        templateRootPaths {
+#            10 =  EXT:t3ws/Resources/Private/t3ws/Templates/
+#        }
+#
+#        dataProcessing {
+#            10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+#            10.references.fieldName = assets
+#        }
+#
+#        settings {
+#            #descriptionCrop = 120
+#            image {
+#                width = 480c
+#                #height = 120
+#            }
+#        }
+#    }
+#}
+
+
+##########################################################################################
+# Libs:
+##########################################################################################
+lib.logo = TEXT
+lib.logo.value (
+    <a href="./" title="Webstammtisch"><img class="img-responsive" src="typo3conf/ext/t3ws/ext_icon.png"></a>
+)
+
+lib.nav.top = HMENU
+lib.nav.top {
+    special = directory
+    special.value = 1
+    protectLvar = 0
+    # erstes level
+    1 = TMENU
+    1.target = _top
+    1.noBlur = 1
+    1.expAll = 1
+    1.wrap(
+      <nav id="navmenu" class="top navbar navbar-default">
+        <ul class="nav navbar-nav lvl-1"><li class="btn-home"><a href="/"><span><span></a></li>|</ul>
+      </nav>
+    )
+    #1.wrap = <nav class="navbar navbar-default top navbar-static-top" role="navigation"><ul class="nav navbar-nav lvl-1">|</ul></nav>
+    1 {
+        NO = 1
+        NO {
+            wrapItemAndSub = <li id="nav-top-{field:uid}">|</li>
+            wrapItemAndSub.insertData = 1
+            ATagTitle.field = title // nav_title
+            ATagParams = class="fst animsition-link"
+            allStdWrap.insertData = 1
+            ATagBeforeWrap = 1
+            linkWrap = <span class="nav-item">|</span>
+        }
+
+        ACT = 1
+        ACT {
+            wrapItemAndSub = <li id="nav-top-{field:uid}" class="active a">|</li>
+            wrapItemAndSub.insertData = 1
+            ATagTitle.field = title // nav_title
+            ATagParams = class="fst animsition-link"
+            allStdWrap.insertData = 1
+            ATagBeforeWrap = 1
+            linkWrap = <span class="nav-item">|</span>
+        }
+
+        CUR < .ACT
+
+        IFSUB = 1
+        IFSUB {
+            wrapItemAndSub = <li id="nav-top-{field:uid}" class="dropdown">|<a class="nav-open" href="#"><span class="glyphicon glyphicon-plus"></span></a></li>
+            wrapItemAndSub.insertData = 1
+            #linkWrap = |<span class="caret"></span>
+            ATagBeforeWrap = 1
+            ATagTitle.field = title
+            ATagParams =  class="dropdown-toggle fst animsition-link" data-toggle="dropdown"
+            #ATagParams = class="dropdown-toggle fst"
+            allStdWrap.insertData = 1
+            ATagBeforeWrap = 1
+            linkWrap = <span class="nav-item">|</span>
+        }
+
+        ACTIFSUB = 1
+        ACTIFSUB {
+            wrapItemAndSub = <li id="nav-top-{field:uid}" class="active dropdown">|<a class="nav-open" href="#"><span class="glyphicon glyphicon-plus"></span></a></li>
+            wrapItemAndSub.insertData = 1
+            #linkWrap = |<span class="caret"></span>
+            ATagBeforeWrap = 1
+            ATagTitle.field = title // nav_title
+            ATagParams =  class="dropdown-toggle fst animsition-link" data-toggle="dropdown"
+            #ATagParams = class="dropdown-toggle fst"
+            allStdWrap.insertData = 1
+            ATagBeforeWrap = 1
+            linkWrap = <span class="nav-item">|</span>
+        }
+
+        CURIFSUB < .ACTIFSUB
+    }
+
+    # zweites level
+    2 = TMENU
+    2.expAll = 1
+    2.noBlur = 1
+    2.stdWrap.dataWrap = <ul class="lvl-2 dropdown-menu" role="menu">|</ul>
+    2 {
+        NO = 1
+        NO {
+            wrapItemAndSub = <li>|</li>
+            ATagTitle.field = title // nav_title
+            allStdWrap.insertData = 1
+        }
+
+        ACT = 1
+        ACT {
+            wrapItemAndSub = <li class="active">|</li>
+            ATagTitle.field = title // nav_title
+        }
+
+        CUR = 1
+        CUR {
+            wrapItemAndSub = <li class="active">|</li>
+            ATagTitle.field = title // nav_title
+        }
+    }
+
+}
+
+lib.col_0 = COA
+lib.col_0 {
+    10 = CONTENT
+    10 {
+        table = tt_content
+        select.orderBy = sorting
+        select.where = colPos = 0
+        select.languageField = sys_language_uid
+        slide = -1
+    }
+}
+
+lib.col_1 = COA
+lib.col_1 {
+    10 = CONTENT
+    10 {
+        table = tt_content
+        select.orderBy = sorting
+        select.where = colPos = 1
+        select.languageField = sys_language_uid
+    }
+}
+
+lib.col_2 = COA
+lib.col_2 {
+    10 = CONTENT
+    10 {
+        table = tt_content
+        select.orderBy = sorting
+        select.where = colPos = 2
+        select.languageField = sys_language_uid
+    }
+}
+
+##########################################################################################
+# Extensions
+##########################################################################################
+
+plugin.tx_xxxxxxxxx {
+    settings {
+        xxxx = xxxxx
+    }
+}

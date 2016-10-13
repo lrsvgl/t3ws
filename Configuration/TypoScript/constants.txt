@@ -1,0 +1,21 @@
+
+
+filepaths {
+	templates = EXT:t3ws/Resources/Private/T3ws/Templates/
+	layouts = EXT:t3ws/Resources/Private/T3ws/Layouts/
+	partials = EXT:t3ws/Resources/Private/T3ws/Partials/
+	css = EXT:t3ws/Resources/Public/Css/
+	images = EXT:t3ws/Resources/Public/Img/
+	js = EXT:t3ws/Resources/Public/Js/
+	bootstrap = EXT:t3ws/Resources/Public/Bootstrap/
+	exttemplates = EXT:t3ws/Resources/Private/Extensions/
+	typoscript = EXT:t3ws/Resources/Configuration/TypoScript/
+}
+
+styles.content.textmedia.maxW = 3000
+styles.content.textmedia.maxWInText = 3000
+
+# news
+#plugin.tx_news.view.templateRootPath = EXT:t3ws/Resources/Private/Extensions/News/Tempates/
+#plugin.tx_news.view.partialRootPath = EXT:t3ws/Resources/Private/Extensions/News/Partials/
+#plugin.tx_news.view.layoutRootPath = EXT:t3ws/Resources/Private/Extensions/News/Layouts/
