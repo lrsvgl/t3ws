@@ -99,29 +99,30 @@ page {
 tt_content.image.20.1.params = class="img-responsive"
 
 
-#tt_content {
-#    t3ws_teaser < lib.fluidContent
-#    t3ws_teaser {
-#        templateName = Teaser.html
-#        templateRootPaths {
-#            10 =  EXT:t3ws/Resources/Private/t3ws/Templates/
-#        }
-#
-#        dataProcessing {
-#            10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
-#            10.references.fieldName = assets
-#        }
-#
-#        settings {
-#            #descriptionCrop = 120
-#            image {
-#                width = 480c
-#                #height = 120
-#            }
-#        }
-#    }
-#}
+tt_content {
+    t3ws_teaser < lib.fluidContent
+    t3ws_teaser {
+        templateName = Teaser.html
+        templateRootPaths {
+            10 =  EXT:t3ws/Resources/Private/t3ws/Templates/
+        }
 
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+            10.references.fieldName = assets
+        }
+
+        settings {
+            #descriptionCrop = 120
+            image {
+                width = 480
+                #height = 120
+            }
+        }
+    }
+}
+
+#lib.fluidContent.partialRootPaths.100 = EXT:t3ws/Resources/Private/T3ws/Partials/
 
 ##########################################################################################
 # Libs:

@@ -26,7 +26,7 @@ $GLOBALS['TCA']['tt_content']['types']['t3ws_teaser'] = array(
 	'
 ); 
 ```
-## TypoScript Setup (Ext:t3ws/Configuration/TypoScript/Page.ts)
+## TypoScript Setup (Ext:t3ws/Configuration/TypoScript/settings.txt)
 ```
 tt_content {
     t3ws_teaser < lib.fluidContent

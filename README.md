@@ -40,13 +40,14 @@ Minimale Anforerung:
 * Erweiterung duplizieren, Templatewechsel durchführen
 * Custom Content Elelemts
 * TypoScript Dateien verwalten, laden per INCLUDE_TYPOSCRIPT
+* Fluid Partials überschreiben, Bsp. Header.html
 
 
  
 
 ## Quellen
 * https://docs.typo3.org/typo3cms/CodingGuidelinesReference/FileSystemConventions/ExtensionDirectoryStructure/Index.html
-
+* https://www.braune-digital.com/blog/typo3-backend-layouts-ueber-page-tsconfig-in-dateien-auslagern/
 
 ## Changes
 *	See [ChangeLog](CHANGELOG.md)
